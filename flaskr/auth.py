@@ -50,7 +50,7 @@ def login():
             current_app.logger.debug(f'Login user {username} success.')
             next_url = request.args.get('next')
             if next_url is None or not next_url.startswith('/'):
-                next_url = url_for('index')
+                next_url = url_for('blog.index')
             return redirect(next_url)
         else:
             error = 'Incorrect username or password'
@@ -62,4 +62,4 @@ def login():
 @bp.route('/logout', endpoint='logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('blog.index'))

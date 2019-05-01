@@ -22,11 +22,8 @@ def create_app(config_name):
     migrate.init_app(app)
     login_manager.init_app(app)
 
-    from . import auth
+    from . import auth, blog
     app.register_blueprint(auth.bp)
-
-    @app.route('/', endpoint='index')
-    def index():
-        return 'index page.'
+    app.register_blueprint(blog.bp)
 
     return app
