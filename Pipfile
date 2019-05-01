@@ -5,9 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+pytest = "*"
 
 [packages]
 flask = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+psycopg2 = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
