@@ -1,6 +1,7 @@
 # coding=utf-8
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, \
+    flash, abort
 from flask_login import login_required, current_user
 
 from .models import Post, User, db
@@ -37,6 +38,35 @@ def create():
     return render_template('blog/create.html')
 
 
-@bp.route('/<int:id>/update', methods=['GET', 'POST'], endpoint='update')
-def update(id):
-    return 'update page'
+@bp.route('/<int:post_id>/update', methods=['GET', 'POST'], endpoint='update')
+@login_required
+def update(post_id):
+    post = Post.query.get(post_id)
+    if post is None:
+        abort(404, f'Post id {post_id} doesn\'t exists.')
+    if post.author_id != current_user.id:
+        abort(403)
+
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        error = None
+
+        if not title:
+            error = 'Title is required.'
+
+        if not error:
+            post.title = title
+            post.body = body
+            db.session.commit()
+            return redirect(url_for('blog.index'))
+        else:
+            flash(error)
+
+    return render_template('blog/update.html', post=post)
+
+
+@bp.route('/<int:post_id>/delete', methods=['POST'], endpoint='delete')
+@login_required
+def delete(post_id):
+    return 'delete operation'
