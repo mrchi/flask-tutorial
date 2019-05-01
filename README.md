@@ -1,5 +1,17 @@
 # flask-tutorial
 
+A Flask application named Flaskr, written by following [Tutorial in Flask Documents](http://flask.pocoo.org/docs/1.0/tutorial/).
+
+Diffenrent from [official example](https://github.com/pallets/flask/tree/1.0.2/examples/tutorial), I use Flask extensions. such as:
+
+- Flask-SQLAlchemy
+- Flask-Login
+- Flask-Migrate
+
+## commands
+
+### database
+
 ```
 docker run -d \
     --name flaskr-db \
@@ -14,8 +26,29 @@ docker run -d \
 psql -U flask -d flaskr -p 5432 -h localhost
 ```
 
+### testing
+
+```
+coverage run -m pytest
+coverage report
+coverage html
+```
+
+### build and install
+
+```
+pip install wheel
+python setup.py bdist_wheel
+```
+
+```
+pip install flaskr-1.0.0-py3-none-any.whl
+export FLASK_APP=flaskr
+flask init-db
+```
+
 ## TODO
 
-- [] json schema 参数验证；
-- [] fake 虚拟数据；
-- [] cli command 测试；
+- [] Use JSON-Schema validating params;
+- [] Add CLI command for generating fake data;
+- [] Add testing for CLI command;
