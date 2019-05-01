@@ -13,3 +13,7 @@ docker run -d \
 ```
 psql -U flask -d flaskr -p 5432 -h localhost
 ```
+
+## TODO
+
+- [] json schema 参数验证；
