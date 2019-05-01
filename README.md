@@ -17,3 +17,4 @@ psql -U flask -d flaskr -p 5432 -h localhost
 ## TODO
 
 - [] json schema 参数验证；
+- [] fake 虚拟数据；
