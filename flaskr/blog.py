@@ -66,7 +66,15 @@ def update(post_id):
     return render_template('blog/update.html', post=post)
 
 
+# delete button is a field of form, so here using post
 @bp.route('/<int:post_id>/delete', methods=['POST'], endpoint='delete')
 @login_required
 def delete(post_id):
-    return 'delete operation'
+    post = Post.query.get(post_id)
+    if post is None:
+        abort(404, f'Post id {post_id} doesn\'t exists.')
+    if post.author_id != current_user.id:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('blog.index'))
