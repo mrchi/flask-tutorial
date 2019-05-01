@@ -18,8 +18,7 @@ def create_app(config_name):
     db.init_app(app)
     migrate.init_app(app)
 
-    @app.route('/hello')
-    def hello():
-        return 'hello, world'
+    from . import auth
+    app.register_blueprint(auth.bp)
 
     return app
