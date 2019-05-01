@@ -27,6 +27,9 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def __repr__(self):
+        return f'<User ({self.id}, {self.username})>'
+
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -36,6 +39,9 @@ class Post(db.Model):
     created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(64), nullable=False)
     body = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f'<Post ({self.id}, {self.title})>'
 
 
 @login_manager.user_loader

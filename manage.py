@@ -6,7 +6,7 @@ import os
 from flask.cli import with_appcontext
 
 from flaskr import create_app
-from flaskr.models import init_db
+from flaskr.models import init_db, db, Post, User
 
 
 config_name = os.environ.get('FLASK_ENV') or 'default'
@@ -18,3 +18,8 @@ app = create_app(config_name)
 def init_db_command():
     init_db()
     app.logger.info('Initialized the database.')
+
+
+@app.shell_context_processor
+def add_shell_context():
+    return dict(db=db, Post=Post, User=User)
