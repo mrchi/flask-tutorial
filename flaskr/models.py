@@ -3,11 +3,12 @@
 from datetime import datetime
 
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-from . import db
+from . import db, login_manager
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -35,6 +36,11 @@ class Post(db.Model):
     created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(64), nullable=False)
     body = db.Column(db.Text, nullable=False)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 def init_db():
