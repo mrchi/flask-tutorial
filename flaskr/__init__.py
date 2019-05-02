@@ -29,7 +29,8 @@ def create_app(config_name=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
 
-    from flaskr.commands import init_db_command
+    from flaskr.commands import init_db_command, generate_fake_data
     app.cli.add_command(init_db_command)
+    app.cli.add_command(generate_fake_data)
 
     return app
