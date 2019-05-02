@@ -5,7 +5,7 @@ from flaskr import create_app
 from flaskr.models import db, Post, User
 
 
-app = create_app()
+app = create_app('development')
 
 
 @app.shell_context_processor

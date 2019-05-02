@@ -49,6 +49,6 @@ flask init-db
 
 ## TODO
 
-- [] Use JSON-Schema validating params;
-- [] Add CLI command for generating fake data;
-- [] Add testing for CLI command;
+- [ ] Use JSON-Schema validating params;
+- [x] Add CLI command for generating fake data;
+- [x] Add testing for CLI command;
