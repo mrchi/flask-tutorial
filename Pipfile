@@ -7,6 +7,7 @@ verify_ssl = true
 flake8 = "*"
 pytest = "*"
 coverage = "*"
+faker = "*"
 
 [packages]
 flask = "*"
