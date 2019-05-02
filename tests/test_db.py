@@ -36,15 +36,16 @@ def test_model_repr(client):
     assert repr(p) == '<Post (1, test title)>'
 
 
-@pytest.mark.xfail
+# @pytest.mark.xfail
 def test_init_db_command(cli_runner, monkeypatch):
-    fake_called = False
+    class Recorder(object):
+        called = False
 
     def fake_init_db():
-        global fake_called
-        fake_called = True
+        print('miaomiaomiao')
+        Recorder.called = True
 
     monkeypatch.setattr('flaskr.models.init_db', fake_init_db)
     result = cli_runner.invoke(args=['init-db'])
-    assert fake_called
     assert 'Initialized' in result.output
+    assert Recorder.called
