@@ -1,8 +1,10 @@
 # coding=utf-8
 
 import os
+import tempfile
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+tempdir = tempfile.gettempdir()
 
 
 class Config:
@@ -27,7 +29,7 @@ class TestConfig(Config):
     TESTING = True
     SERVER_NAME = 'test.flaskr'
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URI') \
-        or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
+        or 'sqlite:///' + os.path.join(tempdir, 'data-test.sqlite')
 
 
 class ProdConfig(Config):
