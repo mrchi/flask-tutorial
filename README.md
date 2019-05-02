@@ -51,6 +51,6 @@ flask run
 
 ## TODO
 
-- [ ] Use JSON-Schema validating params;
+- ~~[ ] Use JSON-Schema validating params;~~ (It's convenient for API, not for templates.)
 - [x] Add CLI command for generating fake data;
 - [x] Add testing for CLI command;
