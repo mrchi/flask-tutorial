@@ -4,7 +4,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, \
     flash, abort
 from flask_login import login_required, current_user
 
-from .models import Post, User, db
+from flaskr.models import Post, db
 
 
 bp = Blueprint('blog', __name__)

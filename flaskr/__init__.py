@@ -22,7 +22,7 @@ def create_app(config_name):
     migrate.init_app(app)
     login_manager.init_app(app)
 
-    from . import auth, blog
+    from flaskr.views import auth, blog
     app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
 
