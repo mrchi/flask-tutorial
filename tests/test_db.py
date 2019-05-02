@@ -42,10 +42,9 @@ def test_init_db_command(cli_runner, monkeypatch):
         called = False
 
     def fake_init_db():
-        print('miaomiaomiao')
         Recorder.called = True
 
-    monkeypatch.setattr('flaskr.models.init_db', fake_init_db)
+    monkeypatch.setattr('flaskr.commands.init_db', fake_init_db)
     result = cli_runner.invoke(args=['init-db'])
     assert 'Initialized' in result.output
     assert Recorder.called
