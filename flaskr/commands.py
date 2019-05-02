@@ -48,3 +48,5 @@ def generate_fake_data():
             i += 1
         except IntegrityError:
             db.session.rollback()
+
+    click.echo('Generated 5 fake users and 20 posts.')
