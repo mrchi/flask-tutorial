@@ -1,5 +1,7 @@
 # coding=utf-8
 
+import pytest
+
 from flaskr.models import User, Post
 
 
@@ -17,6 +19,7 @@ def test_init_db_command(cli_runner, monkeypatch):
 
 
 def test_fake_command(cli_runner):
+    pytest.importorskip("faker")
     user_count = User.query.count()
     post_count = Post.query.count()
     result = cli_runner.invoke(args=['fake'])
