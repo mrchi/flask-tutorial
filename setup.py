@@ -7,6 +7,6 @@ setup(
     include_package_data=True,      # include other files listed in MANIFEST.in
     zip_safe=False,
     install_requires=[
-        'flask', 'flask-sqlalchemy', 'flask-migrate', 'psycopg2', 'flask-login'
+        'flask', 'flask-sqlalchemy', 'flask-migrate', 'flask-login'
     ]
 )
