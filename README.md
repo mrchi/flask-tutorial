@@ -2,7 +2,7 @@
 
 A Flask application named Flaskr, written by following [Tutorial in Flask Documents](http://flask.pocoo.org/docs/1.0/tutorial/).
 
-Diffenrent from [official example](https://github.com/pallets/flask/tree/1.0.2/examples/tutorial), I use Flask extensions. such as:
+Different from [official example](https://github.com/pallets/flask/tree/1.0.2/examples/tutorial), I use Flask extensions. such as:
 
 - Flask-SQLAlchemy
 - Flask-Login
