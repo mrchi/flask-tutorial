@@ -9,7 +9,6 @@ tempdir = tempfile.gettempdir()
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'it is a secret'
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod
